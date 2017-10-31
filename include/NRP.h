@@ -64,10 +64,11 @@ typedef struct NRP_packet     //Создаем структуру!
     uint8_t _length;
 } NRP_packet;
 
-bool NRP_send_packet(uint8_t host, NRP_packet packet);
-void NRP_parsePacket(NRP_packet packet);
 extern void CMD_parser(NRP_packet packet);
 extern bool radio_send(uint64_t address, const void* buf, uint8_t len, const bool multicast);
+
+bool NRP_send_packet(uint8_t host, NRP_packet packet);
+void NRP_parsePacket(NRP_packet packet);
 char* c_printDate();
 
 #ifdef __cplusplus

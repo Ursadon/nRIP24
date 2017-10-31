@@ -4,6 +4,8 @@
         "cstdint": "c",
         "stdbool.h": "c",
         "testharness.h": "c",
-        "additionals.h": "c"
+        "additionals.h": "c",
+        "array": "cpp",
+        "string_view": "cpp"
     }
 }

@@ -4,6 +4,9 @@
 #include "NRP.h"
 #include "additionals.h"
 
+unsigned int routingTableCount;
+unsigned int routingTable[256][4];
+
 void uRIP_sortDatabase() {
     int i, s = 1;
     uint8_t key1, key2, key3, key4;
@@ -30,15 +33,15 @@ void uRIP_sortDatabase() {
     }
 }
 
-void uRIP_updateRecord(uint8_t route, uint8_t metrics, uint8_t nexthop) {
+uint8_t uRIP_updateRecord(uint8_t route, uint8_t metrics, uint8_t nexthop) {
     if ((metrics > 16) || (route == 0x00) || (route == rx_addr) || (route == 0xff)) {
         // Incorrect routes
-        return;
+        return 2;
     }
-    if (metrics == 16)
+    if (metrics == 16) // TODO: remove this check and re-read RFC
     {
         uRIP_deleteRoute(route);
-        return;
+        return 3;
     }
     bool start_deleting_process = false;
     if (metrics == 15)
@@ -56,7 +59,7 @@ void uRIP_updateRecord(uint8_t route, uint8_t metrics, uint8_t nexthop) {
         if (metrics == 16)
         {
             // Не добавляем записи, помеченные на удаление (т.е. с метрикой 16)
-            return;
+            return 4;
         }
         routingTable[route_id][Host] = route;
         routingTable[route_id][Metrics] = metrics;
@@ -66,7 +69,7 @@ void uRIP_updateRecord(uint8_t route, uint8_t metrics, uint8_t nexthop) {
         routingTableCount++;
         __DEBUG(printf("%s%s%s-> [RX] [info] New route: 0x%02X via 0x%02X M=%u%s\n", CYAN, c_printDate(), BLUE, (unsigned int) route, (unsigned int) nexthop, (unsigned int) metrics, RESET) ;);
         //TODO: route change - triggered update
-        return;
+        return 0;
     }
     /*
      * Проверяем таблицу маршрутизации на предмет наличия записи, адрес которой в точности совпадается с полученным в RTE
@@ -75,7 +78,7 @@ void uRIP_updateRecord(uint8_t route, uint8_t metrics, uint8_t nexthop) {
     if ((routingTable[route_id][Metrics] == metrics) && (routingTable[route_id][NextHop] == nexthop))
     {
         routingTable[route_id][Timer] = 0;
-        return;
+        return 5;
     }
     /*
      * Если запись получена от того же маршрутизатора, что и RTE, и метрики разные, или
@@ -97,10 +100,10 @@ void uRIP_updateRecord(uint8_t route, uint8_t metrics, uint8_t nexthop) {
         {
             routingTable[route_id][Timer] = 0;
         }
-        return;
+        return 6;
     }
 }
-void uRIP_deleteRoute(uint8_t route) {
+bool uRIP_deleteRoute(uint8_t route) {
     uint8_t route_id = uRIP_lookuphost(route);
     if (route_id != 0xff) {
         routingTable[route_id][Host] = 0xff;
@@ -109,7 +112,9 @@ void uRIP_deleteRoute(uint8_t route) {
         routingTable[route_id][Timer] = 0;
         routingTableCount--;
         uRIP_sortDatabase();
+        return true;
     }
+    return false;
 }
 void uRIP_garbageCollector() {
     uint8_t count = routingTableCount;
@@ -122,7 +127,7 @@ void uRIP_garbageCollector() {
             routingTable[route_id][Timer] = 0;
             routingTableCount--;
             uRIP_sortDatabase();
-            return;
+            continue;
         }
         else if (routingTable[route_id][Timer] == ROUTE_TIMEOUT_TIMER) {
             __DEBUG(printf("%s%s%s <internal> [info] Marked route to delete: 0x%02X %s\n", CYAN, c_printDate(), YELLOW, (unsigned int) routingTable[route_id][Host], RESET););

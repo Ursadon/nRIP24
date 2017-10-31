@@ -14,6 +14,7 @@ endif()
 set(TEST_APP_NAME ${CMAKE_PROJECT_NAME}_tests)
 set(TEST_SOURCES
     check_nrp.cpp
+    check_rip.cpp
     main.cpp
 )
 
