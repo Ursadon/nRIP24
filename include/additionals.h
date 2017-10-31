@@ -25,14 +25,14 @@
  */
 
 /*
- * File:   misc.h
+ * File:   additionals.h
  * Author: NikolayL
  *
  * Created on October 9, 2017, 11:13 PM
  */
 
-#ifndef MISC_H
-#define MISC_H
+#ifndef ADDITIONALS_H
+#define ADDITIONALS_H
 
 #ifdef _PRINTF_DEBUG_
 	#define __DEBUG(...) __VA_ARGS__
@@ -74,5 +74,5 @@ char* c_printDate();
 }
 #endif
 
-#endif /* MISC_H */
+#endif /* ADDITIONALS_H */
 
