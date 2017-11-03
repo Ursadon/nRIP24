@@ -1,0 +1,335 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{8d2a6b23-cc1c-4ebf-b38a-90afb041c27b}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{b920ee0d-34d0-4714-af21-827952178952}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{821b9301-367f-41e4-8412-47f4f0984e00}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="VisualGDB settings">
+      <UniqueIdentifier>{cdd9d269-328e-4a43-bda0-a10fa028478a}</UniqueIdentifier>
+      <Extensions>*.vgdbsettings</Extensions>
+    </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{b50da3d6-64e3-4542-8100-613b6b1f1218}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files">
+      <UniqueIdentifier>{8d767ae6-9dca-47ca-bce6-a25dbcee5583}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Device-specific files\StdPeriph">
+      <UniqueIdentifier>{e1d9a76d-8885-40cf-9430-e390a92de396}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Device-specific files\StdPeriph">
+      <UniqueIdentifier>{48197f14-b634-48d8-9cc6-0cb3ed4237f3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\FreeRTOS">
+      <UniqueIdentifier>{b8aac530-8820-4ce3-9a77-5bdc81172fe9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\FreeRTOS">
+      <UniqueIdentifier>{715b1587-26e1-4d21-8ed3-250102024f72}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\FreeRTOS\include">
+      <UniqueIdentifier>{56dc988f-2d2e-4b7d-81a5-d8036158ce8f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\FreeRTOS\include">
+      <UniqueIdentifier>{f91061a3-bb2a-414a-8628-2567cd63343b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\NRF24">
+      <UniqueIdentifier>{9d046a38-e59c-4b77-930a-495810ffe72a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\NRF24">
+      <UniqueIdentifier>{78bb8128-657b-4996-befb-c5820ca598ab}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\nRIP24">
+      <UniqueIdentifier>{55f8ede4-8b1c-49c9-bc5e-f771602b28f1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\nRIP24">
+      <UniqueIdentifier>{766e6e16-e135-4a51-9f45-3a86d98c36ee}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="system_stm32f10x.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\StartupFiles\startup_stm32f103xb.c">
+      <Filter>Source files\Device-specific files</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\misc.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\CMSIS_StdPeriph\CM3\CoreSupport\core_cm3.c">
+      <Filter>Source files\Device-specific files\StdPeriph</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\croutine.c">
+      <Filter>Source files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\heap_4.c">
+      <Filter>Source files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\list.c">
+      <Filter>Source files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\port.c">
+      <Filter>Source files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\queue.c">
+      <Filter>Source files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\tasks.c">
+      <Filter>Source files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="FreeRTOS\timers.c">
+      <Filter>Source files\FreeRTOS</Filter>
+    </ClCompile>
+    <ClCompile Include="NRF24\nrf24.c">
+      <Filter>Source files\NRF24</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\additionals.c">
+      <Filter>Source files\nRIP24</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\NRP.c">
+      <Filter>Source files\nRIP24</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\src\RIP.c">
+      <Filter>Source files\nRIP24</Filter>
+    </ClCompile>
+    <ClCompile Include="main.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="stm32f103c8-Debug.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32f103c8-Release.vgdbsettings">
+      <Filter>VisualGDB settings</Filter>
+    </None>
+    <None Include="stm32.props">
+      <Filter>Source files\Device-specific files</Filter>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\misc.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\CMSIS_StdPeriph\CM3\CoreSupport\core_cm3.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\CMSIS_StdPeriph\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\CMSIS_StdPeriph\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h">
+      <Filter>Header files\Device-specific files\StdPeriph</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\croutine.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\deprecated_definitions.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\event_groups.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\FreeRTOS.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\FreeRTOSConfig.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\list.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\mpu_prototypes.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\mpu_wrappers.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\portable.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\portmacro.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\projdefs.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\queue.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\semphr.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\StackMacros.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\task.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="FreeRTOS\include\timers.h">
+      <Filter>Header files\FreeRTOS\include</Filter>
+    </ClInclude>
+    <ClInclude Include="NRF24\nrf24.h">
+      <Filter>Header files\NRF24</Filter>
+    </ClInclude>
+    <ClInclude Include="NRF24\nRF24L01.h">
+      <Filter>Header files\NRF24</Filter>
+    </ClInclude>
+    <ClInclude Include="NRF24\RF24_config.h">
+      <Filter>Header files\NRF24</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\additionals.h">
+      <Filter>Header files\nRIP24</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\NRP.h">
+      <Filter>Header files\nRIP24</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\include\RIP.h">
+      <Filter>Header files\nRIP24</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="stm32.xml">
+      <Filter>VisualGDB settings</Filter>
+    </Xml>
+  </ItemGroup>
+</Project>

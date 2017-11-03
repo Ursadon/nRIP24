@@ -1,5 +1,6 @@
 #include <stdint.h>
 #include <stdbool.h>
+#include <stdio.h>
 #include "RIP.h"
 #include "NRP.h"
 #include "additionals.h"
@@ -84,8 +85,8 @@ uint8_t uRIP_updateRecord(uint8_t route, uint8_t metrics, uint8_t nexthop) {
      * Если запись получена от того же маршрутизатора, что и RTE, и метрики разные, или
      * полученная для записи метрика меньше, чем содержащаяся в таблице маршрутизации
      */
-    if ((metrics != routingTable[route_id][Metrics]) && (routingTable[route_id][NextHop] == nexthop) |
-            (metrics < routingTable[route_id][Metrics]) && (routingTable[route_id][NextHop] != nexthop))
+    if (((metrics != routingTable[route_id][Metrics]) && (routingTable[route_id][NextHop] == nexthop)) |
+            ((metrics < routingTable[route_id][Metrics]) && (routingTable[route_id][NextHop] != nexthop)))
     {
         //routingTable[route_id][Timer] = 0;
         routingTable[route_id][NextHop] = nexthop;
@@ -95,13 +96,15 @@ uint8_t uRIP_updateRecord(uint8_t route, uint8_t metrics, uint8_t nexthop) {
         {
             __DEBUG(printf("%s%s%s-> [RX] [warn] Recieved new route, but maximum metric reached 0x%02X %s\n", CYAN, c_printDate(), YELLOW, (unsigned int)route, RESET) ;);
             routingTable[route_id][Timer] = ROUTE_TIMEOUT_TIMER;
+            return 7;
         }
         else
         {
             routingTable[route_id][Timer] = 0;
+            return 8;
         }
-        return 6;
     }
+    return 6;
 }
 bool uRIP_deleteRoute(uint8_t route) {
     uint8_t route_id = uRIP_lookuphost(route);

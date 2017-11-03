@@ -9,7 +9,24 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 
+# User-specific files
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.settings
+OrangePI
+RaspberryPI
+upload.sh
+# User-specific files (MonoDevelop/Xamarin Studio)
+*.userprefs
+
+VisualGDB
+.vs
+.vscode
 build
+stm32.props
+stm32.xml
 # Prerequisites
 *.d
 

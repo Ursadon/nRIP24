@@ -9,7 +9,7 @@
 #include "NRP.h"
 #include "RIP.h"
 #include "additionals.h"
-
+#include "main.h"
 
 bool NRP_send_packet(uint8_t host, NRP_packet packet) {
     uint8_t header = (packet.version << 4) + packet.type;

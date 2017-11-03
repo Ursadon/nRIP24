@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|VisualGDB">
+      <Configuration>Debug</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|VisualGDB">
+      <Configuration>Release</Configuration>
+      <Platform>VisualGDB</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <VCProjectVersion>15.0</VCProjectVersion>
+    <ProjectGuid>{FD45D2BE-45EF-4CB0-BB38-1BA8260E0A0A}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration" Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <MCUPropertyListFile>$(ProjectDir)stm32.props</MCUPropertyListFile>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="Shared">
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <GNUConfigurationType>Debug</GNUConfigurationType>
+    <Toolchain>C:\SysGCC\arm-eabi</Toolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|VisualGDB'">
+    <Toolchain>C:\SysGCC\arm-eabi</Toolchain>
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
+    <ClCompile>
+      <AdditionalIncludeDirectories>FreeRTOS/include;NRF24;../../include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+    </ClCompile>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\src\additionals.c" />
+    <ClCompile Include="..\..\src\NRP.c" />
+    <ClCompile Include="..\..\src\RIP.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\CMSIS_StdPeriph\CM3\CoreSupport\core_cm3.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\StartupFiles\startup_stm32f103xb.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\misc.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_adc.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_bkp.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_can.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_cec.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_crc.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_dac.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_dbgmcu.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_dma.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_exti.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_flash.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_fsmc.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_gpio.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_i2c.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_iwdg.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_pwr.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_rcc.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_rtc.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_sdio.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_spi.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_tim.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_usart.c" />
+    <ClCompile Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\src\stm32f10x_wwdg.c" />
+    <ClCompile Include="FreeRTOS\croutine.c" />
+    <ClCompile Include="FreeRTOS\heap_4.c" />
+    <ClCompile Include="FreeRTOS\list.c" />
+    <ClCompile Include="FreeRTOS\port.c" />
+    <ClCompile Include="FreeRTOS\queue.c" />
+    <ClCompile Include="FreeRTOS\tasks.c" />
+    <ClCompile Include="FreeRTOS\timers.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="NRF24\nrf24.c" />
+    <ClCompile Include="system_stm32f10x.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="stm32.props" />
+    <None Include="stm32f103c8-Debug.vgdbsettings" />
+    <None Include="stm32f103c8-Release.vgdbsettings" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\include\additionals.h" />
+    <ClInclude Include="..\..\include\NRP.h" />
+    <ClInclude Include="..\..\include\RIP.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\CMSIS_StdPeriph\CM3\CoreSupport\core_cm3.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\CMSIS_StdPeriph\CM3\DeviceSupport\ST\STM32F10x\stm32f10x.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\CMSIS_StdPeriph\CM3\DeviceSupport\ST\STM32F10x\system_stm32f10x.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\misc.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_adc.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_bkp.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_can.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_cec.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_crc.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dac.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dbgmcu.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_dma.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_exti.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_flash.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_fsmc.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_gpio.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_i2c.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_iwdg.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_pwr.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rcc.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_rtc.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_sdio.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_spi.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_tim.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_usart.h" />
+    <ClInclude Include="C:\Projects\BSP\STM32F1xxxx\STM32F10x_StdPeriph_Driver\inc\stm32f10x_wwdg.h" />
+    <ClInclude Include="FreeRTOS\include\croutine.h" />
+    <ClInclude Include="FreeRTOS\include\deprecated_definitions.h" />
+    <ClInclude Include="FreeRTOS\include\event_groups.h" />
+    <ClInclude Include="FreeRTOS\include\FreeRTOS.h" />
+    <ClInclude Include="FreeRTOS\include\FreeRTOSConfig.h" />
+    <ClInclude Include="FreeRTOS\include\list.h" />
+    <ClInclude Include="FreeRTOS\include\mpu_prototypes.h" />
+    <ClInclude Include="FreeRTOS\include\mpu_wrappers.h" />
+    <ClInclude Include="FreeRTOS\include\portable.h" />
+    <ClInclude Include="FreeRTOS\include\portmacro.h" />
+    <ClInclude Include="FreeRTOS\include\projdefs.h" />
+    <ClInclude Include="FreeRTOS\include\queue.h" />
+    <ClInclude Include="FreeRTOS\include\semphr.h" />
+    <ClInclude Include="FreeRTOS\include\StackMacros.h" />
+    <ClInclude Include="FreeRTOS\include\task.h" />
+    <ClInclude Include="FreeRTOS\include\timers.h" />
+    <ClInclude Include="NRF24\nrf24.h" />
+    <ClInclude Include="NRF24\nRF24L01.h" />
+    <ClInclude Include="NRF24\RF24_config.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Xml Include="stm32.xml" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

@@ -41,9 +41,9 @@ extern "C" {
 #endif
 
 #ifdef _RPI_
-const uint8_t rx_addr = 0x17;
+static const uint8_t rx_addr = 0x17;
 #elif _OPI_
-const uint8_t rx_addr = 0xA7;
+static const uint8_t rx_addr = 0xA7;
 #else
 static const uint8_t rx_addr = 0x07;
 #endif

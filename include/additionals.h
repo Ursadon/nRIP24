@@ -39,6 +39,7 @@
 #else
 	#define __DEBUG(...)
 #endif
+#include <stdint.h>
 
 #ifdef __cplusplus
 extern "C" {
