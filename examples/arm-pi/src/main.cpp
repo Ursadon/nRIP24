@@ -166,7 +166,10 @@ void jobReadTerminal() {
 	std::string arg;
 	std::cout << GREEN << __func__ << " thread stared" << RESET << endl;
 	std::cout << "Ready" << endl << "2. send <addr> <byte>" << endl
-			<< "3. route - show routes" << endl;
+			<< "3. route - show routes" << endl
+			<< "4. sendroute - show routes on <host>" << endl
+			<< "5. flood - send 255 packets to <host>" << endl;
+
 
 	while (1) {
 		std::cout << "> ";
@@ -228,6 +231,34 @@ void jobReadTerminal() {
 				__DEBUG(printf("%s%s%s-> [RX] [error] No route to host: 0x%02X %s\n", CYAN, c_printDate(), RED, (unsigned int)j, RESET) ;);
 			}
 		}
+		if ((tokens.at(0) == "flood" || tokens.at(0) == "5") & (argc == 2)) {
+			uint8_t route_id;
+			unsigned long cnt=0;
+			j = std::stoi(tokens.at(1), NULL, 16);
+
+			route_id = uRIP_lookuphost(j);
+			if (route_id != 0xff) {
+				NRP_packet packet;
+				packet.version = 1;
+				packet.type = ptData;
+				packet.source = rx_addr;
+				packet.destination = j;
+				packet.ttl = 0;
+				packet._length = 1;
+				packet.data[0] = 0xAF;
+				for (unsigned long p = 0; p < 255; ++p) {
+					if (!NRP_send_packet(routingTable[route_id][NextHop], packet)) {
+						cnt++;
+					} else {
+
+					}
+				}
+				cout << "Flood result: " << cnt << "/255 failed\n" << endl;
+
+			} else {
+				__DEBUG(printf("%s%s%s-> [RX] [error] No route to host: 0x%02X %s\n", CYAN, c_printDate(), RED, (unsigned int)j, RESET) ;);
+			}
+		}
 		if ((tokens.at(0) == "sendroute" || tokens.at(0) == "4") & (argc == 4)) {
 			uint8_t route_id, dst;
 			uint8_t data[28];
@@ -269,7 +300,7 @@ int main(int argc, char** argv) {
 	radio.setPayloadSize(32);
 	radio.setAutoAck(1);
 	radio.setAutoAck(1, 0);
-	radio.setRetries(0, 2);
+	radio.setRetries(5, 15);
 	radio.setDataRate(RF24_2MBPS);
 	radio.setPALevel(RF24_PA_MAX);
 	radio.setChannel(40);

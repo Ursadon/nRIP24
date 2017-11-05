@@ -86,16 +86,10 @@ void nrf24_setupPins(void) {
 	/* Enable SPI1   */
 	SPI_Cmd(SPI1, ENABLE);
 }
-
+volatile uint8_t rx_test_packet_count = 0;
 uint8_t radio_is_interrupt() {
 	if (!GPIO_ReadInputDataBit(GPIOB, GPIO_Pin_0)) {
-		if (xSemaphoreTake(xSPIsemaphore, (TickType_t) 1000) == pdTRUE) {
-			if (read_register(NRF_STATUS) & _BV(RX_DR)) {
-				xSemaphoreGive(xSPIsemaphore);
-				return 1;
-			}
-			xSemaphoreGive(xSPIsemaphore);
-		}
+		return 1;
 	}
 	return 0;
 }
@@ -109,6 +103,7 @@ void CMD_parser(NRP_packet packet)
 		}
 		if (packet.data[0] == 3) //Get RT
 		{
+
 			NRP_packet packet_send;
 			packet_send.version = 1;
 			packet_send.type = ptData;
@@ -128,6 +123,39 @@ void CMD_parser(NRP_packet packet)
 				}
 			}
 		}
+		if (packet.data[0] == 0xAF) // send something
+		{
+			rx_test_packet_count++;	
+			
+			NRP_packet packet_send;
+			packet_send.version = 1;
+			packet_send.type = ptData;
+			packet_send.source = rx_addr;
+			packet_send.destination = packet.source;
+			packet_send.ttl = 0;
+			packet_send._length = 1;
+			packet_send.data[0] = 0xAD;
+			rx_test_packet_count = 0;
+			uint8_t route_id = uRIP_lookuphost(packet.source);
+			
+			NRP_send_packet(routingTable[route_id][NextHop], packet_send);
+		}
+		if (packet.data[0] == 9) // send something
+		{
+			NRP_packet packet_send;
+			packet_send.version = 1;
+			packet_send.type = ptData;
+			packet_send.source = rx_addr;
+			packet_send.destination = packet.source;
+			packet_send.ttl = 0;
+			packet_send._length = 1;
+			packet_send.data[0] = rx_test_packet_count;
+			rx_test_packet_count = 0;
+			uint8_t route_id = uRIP_lookuphost(packet.source);
+			
+			NRP_send_packet(routingTable[route_id][NextHop], packet_send);
+			
+		}
 		if (packet.data[0] == 5) // send something
 		{
 			NRP_packet packet_send;
@@ -141,6 +169,7 @@ void CMD_parser(NRP_packet packet)
 			uint8_t route_id = uRIP_lookuphost(packet.source);
 			
 			NRP_send_packet(routingTable[route_id][NextHop], packet_send);
+			
 		}
 	}
 }
@@ -152,32 +181,32 @@ void vScanRF(void *pvParameters) {
 	for (;;) {
 		while (radio_is_interrupt()) {
 			if (xSemaphoreTake(xSPIsemaphore, (TickType_t) 1000) == pdTRUE) {
+				while (radio_available())
+				{
+					
 			    /* We were able to obtain the semaphore and can now access the
 			     shared resource. */
-				len = radio_getDynamicPayloadSize();
-				radio_read(receivePayload, len);
-				if ((receivePayload[0] & 0x0F) == uRIP_update)
-				{
-					asm("nop");
-				}
-				// Display it on screen
-				if ((receivePayload[0] >> 4) == 1 && len >= 1) { // Protocol packet! Header rcvd
-					packet.version = receivePayload[0] >> 4;
-					packet.type = receivePayload[0] & 0x0F;
-					packet.destination = receivePayload[1];
-					packet.source = receivePayload[2];
-					packet.ttl = receivePayload[3];
-					packet._length = len - 4;
+					len = radio_getDynamicPayloadSize();
+					radio_read(receivePayload, len);
+					// Display it on screen
+					if ((receivePayload[0] >> 4) == 1 && len >= 1) { // Protocol packet! Header rcvd
+						packet.version = receivePayload[0] >> 4;
+						packet.type = receivePayload[0] & 0x0F;
+						packet.destination = receivePayload[1];
+						packet.source = receivePayload[2];
+						packet.ttl = receivePayload[3];
+						packet._length = len - 4;
 
-					if ((uint8_t)packet._length > 0) {
-						for (int i = 0; i < packet._length; i++) {
-							packet.data[i] = receivePayload[4 + i];
+						if ((uint8_t)packet._length > 0) {
+							for (int i = 0; i < packet._length; i++) {
+								packet.data[i] = receivePayload[4 + i];
+							}
 						}
+						NRP_parsePacket(packet);
 					}
-					NRP_parsePacket(packet);
-				}
-				else {
-				    // error!
+					else {
+					    // error!
+					}
 				}
 				/* We have finished accessing the shared resource.  Release the
 				 semaphore. */
@@ -250,6 +279,7 @@ int main(void) {
 	radio_openWritingPipe(0x00);
 	radio_openReadingPipe(1, 0x00);
 	radio_openReadingPipe(2, rx_addr);
+	radio_maskIRQ(1, 1, 0);
 	radio_flush_tx();
 	radio_flush_rx();
 	radio_startListening();

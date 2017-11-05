@@ -32,7 +32,7 @@ uint8_t _SPItransfer(uint8_t data) {
 }
 
 void delay (uint64_t ticks) {
-	for (unsigned long long j = 0; j < ticks*72000; ++j) {
+	for (unsigned long long j = 0; j < ticks*100; ++j) {
 		__NOP();
 	}
 }
@@ -777,7 +777,7 @@ uint8_t radio_txStandBy(){
 
 /****************************************************************************/
 
-void maskIRQ(uint8_t tx, uint8_t fail, uint8_t rx){
+void radio_maskIRQ(uint8_t tx, uint8_t fail, uint8_t rx){
 
 	uint8_t config = read_register(NRF_CONFIG);
 	/* clear the interrupt flags */
@@ -1129,7 +1129,7 @@ uint8_t setDataRate(rf24_datarate_e speed)
     {
       setup |= _BV(RF_DR_HIGH);
       #if defined(__arm__) || defined (RF24_LINUX) || defined (__ARDUINO_X86__)
-      txDelay=190;
+      txDelay=250;
       #else //16Mhz Arduino
 	  txDelay=65;
 	  #endif

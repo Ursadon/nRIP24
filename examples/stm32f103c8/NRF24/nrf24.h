@@ -841,7 +841,7 @@ s   *
   * @param tx_fail  Mask transmit failure interrupts
   * @param rx_ready Mask payload received interrupts
   */
-  void maskIRQ(uint8_t tx_ok,uint8_t tx_fail,uint8_t rx_ready);
+void radio_maskIRQ(uint8_t tx_ok, uint8_t tx_fail, uint8_t rx_ready);
 
   /**
   *
