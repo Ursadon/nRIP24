@@ -11,8 +11,8 @@
 #define configCPU_CLOCK_HZ          ( ( unsigned long long ) 72000000 )
 #define configTICK_RATE_HZ          ( ( portTickType ) 1000 )
 #define configMAX_PRIORITIES        ( 5 )
-#define configMINIMAL_STACK_SIZE    ( ( unsigned short ) 120 )
-#define configTOTAL_HEAP_SIZE       ( ( size_t ) ( 5 * 1024 ) )
+#define configMINIMAL_STACK_SIZE    ( ( unsigned short ) 360 )
+#define configTOTAL_HEAP_SIZE       ( ( size_t ) (  7* 1024 ) )
 #define configMAX_TASK_NAME_LEN     ( 16 )
 #define configUSE_TRACE_FACILITY    0
 #define configUSE_16_BIT_TICKS      0
@@ -28,7 +28,7 @@
 #define configUSE_RECURSIVE_MUTEXES     0
 #define configQUEUE_REGISTRY_SIZE       0
 #define configGENERATE_RUN_TIME_STATS   0
-#define configCHECK_FOR_STACK_OVERFLOW	0
+#define configCHECK_FOR_STACK_OVERFLOW	2
 /* Set the following definitions to 1 to include the API function, or zero
 to exclude the API function. */
 

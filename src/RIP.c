@@ -176,7 +176,6 @@ void uRIP_sendRoutes(uint8_t host) {
     packet.source = rx_addr;
     packet.destination = host;
     packet.ttl = 0;
-    //packet._length = routingTableCount * 3
     uint8_t j;
     for (unsigned int i = 0; i < routingTableCount * 2; i++) {
         j = i % 28;
@@ -188,4 +187,17 @@ void uRIP_sendRoutes(uint8_t host) {
             NRP_send_packet(host, packet);
         }
     }
+}
+
+void uRIP_sendDiscoveryReq()
+{
+	NRP_packet packet;
+	packet.version = 1;
+	packet.type = uRIP_discovery;
+	packet.source = rx_addr;
+	packet.destination = 0x00;
+	packet.ttl = 0;
+	packet._length = 1;
+	packet.data[0] = 0x00;
+	NRP_send_packet(0x00, packet);
 }

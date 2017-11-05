@@ -51,7 +51,7 @@ static const uint8_t rx_addr = 0x07;
 #define BASEADDR 0xA0A1F0F100LL
 
 enum Route { Host = 0, Metrics, NextHop, Timer };
-enum PacketType { ptData = 0, uRIP_update, MCUcontrol } PacketType;
+enum PacketType { ptData = 0, uRIP_update, uRIP_discovery, MCUcontrol } PacketType;
 
 typedef struct NRP_packet     //Создаем структуру!
 {

@@ -149,7 +149,8 @@ void jobRouting() {
 
 		nrf_.lock();
 		//cout << WHITE << CYAN << printDate() << RESET << "<- [TX] Sending uRIP routes (count = " << (unsigned int) routingTableCount << ")" << RESET << endl;
-		uRIP_sendRoutes(0x00);
+		//uRIP_sendRoutes(0x00);
+		uRIP_sendDiscoveryReq();
 		uRIP_garbageCollector();
 		nrf_.unlock();
 		boost::this_thread::sleep_for(boost::chrono::seconds(2));
@@ -219,6 +220,35 @@ void jobReadTerminal() {
 				packet.data[0] = byte;
 
 				if (!NRP_send_packet(routingTable[route_id][NextHop], packet)) {
+					cout << "Send Fail" << endl;
+				} else {
+					cout << "Send OK" << endl;
+				}
+			} else {
+				__DEBUG(printf("%s%s%s-> [RX] [error] No route to host: 0x%02X %s\n", CYAN, c_printDate(), RED, (unsigned int)j, RESET) ;);
+			}
+		}
+		if ((tokens.at(0) == "sendroute" || tokens.at(0) == "4") & (argc == 4)) {
+			uint8_t route_id, dst;
+			uint8_t data[28];
+			dst = std::stoi(tokens.at(1), NULL, 16);
+			data[0] = std::stoi(tokens.at(2), NULL, 16);
+			data[1] = std::stoi(tokens.at(3), NULL, 16);
+			route_id = uRIP_lookuphost(dst);
+
+			if (route_id != 0xff) {
+
+				NRP_packet packet;
+				memcpy ( &packet.data, &data, sizeof(data) );
+				packet.version = 1;
+				packet.type = uRIP_update;
+				packet.source = rx_addr;
+				packet.destination = dst;
+				packet.ttl = 0;
+				packet._length = 2;
+				//packet.data =;
+
+				if (!NRP_send_packet(routingTable[route_id][Host], packet)) {
 					cout << "Send Fail" << endl;
 				} else {
 					cout << "Send OK" << endl;

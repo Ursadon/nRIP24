@@ -150,20 +150,25 @@ void vScanRF(void *pvParameters) {
 	NRP_packet packet;
 
 	for (;;) {
-		if (radio_is_interrupt()) {
+		while (radio_is_interrupt()) {
 			if (xSemaphoreTake(xSPIsemaphore, (TickType_t) 1000) == pdTRUE) {
 			    /* We were able to obtain the semaphore and can now access the
 			     shared resource. */
 				len = radio_getDynamicPayloadSize();
 				radio_read(receivePayload, len);
+				if ((receivePayload[0] & 0x0F) == uRIP_update)
+				{
+					asm("nop");
+				}
 				// Display it on screen
-				if ((receivePayload[0] >> 4) == 1 && len >= 5) { // Protocol packet! Header rcvd
+				if ((receivePayload[0] >> 4) == 1 && len >= 1) { // Protocol packet! Header rcvd
 					packet.version = receivePayload[0] >> 4;
 					packet.type = receivePayload[0] & 0x0F;
 					packet.destination = receivePayload[1];
 					packet.source = receivePayload[2];
 					packet.ttl = receivePayload[3];
 					packet._length = len - 4;
+
 					if ((uint8_t)packet._length > 0) {
 						for (int i = 0; i < packet._length; i++) {
 							packet.data[i] = receivePayload[4 + i];
@@ -188,7 +193,8 @@ void vDiscovery(void *pvParameters) {
 		//			radio_stopListening();
 		//			radio_send(0x00,data,4,1);
 		//			radio_startListening();
-			uRIP_sendRoutes(0x00);
+		//	uRIP_sendRoutes(0x00);
+			uRIP_sendDiscoveryReq();
 			xSemaphoreGive(xSPIsemaphore);
 		}
 		vTaskDelay(1000);
@@ -250,8 +256,8 @@ int main(void) {
 
 	xSPIsemaphore = xSemaphoreCreateMutex();
 
-	xTaskCreate(vScanRF, "vScanRF", (uint16_t) 120, NULL, tskIDLE_PRIORITY + 1, (xTaskHandle *) NULL);
-	xTaskCreate(vDiscovery,	"vDiscovery", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, (xTaskHandle *) NULL);
-	xTaskCreate(vGarbageCollerctor, "vGarbageCollerctor", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, (xTaskHandle *) NULL);
+	xTaskCreate(vScanRF, "vScanRF", (uint16_t) 240, NULL, tskIDLE_PRIORITY + 1, (xTaskHandle *) NULL);
+	xTaskCreate(vDiscovery,	"vDiscovery", configMINIMAL_STACK_SIZE+120, NULL, tskIDLE_PRIORITY + 1, (xTaskHandle *) NULL);
+	xTaskCreate(vGarbageCollerctor, "vGarbageCollector", configMINIMAL_STACK_SIZE, NULL, tskIDLE_PRIORITY + 1, (xTaskHandle *) NULL);
 	vTaskStartScheduler();
 } //-V591

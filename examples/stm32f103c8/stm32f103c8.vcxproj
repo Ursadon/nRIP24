@@ -37,6 +37,7 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|VisualGDB'">
     <ClCompile>
       <AdditionalIncludeDirectories>FreeRTOS/include;NRF24;../../include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <Optimization>O1</Optimization>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>

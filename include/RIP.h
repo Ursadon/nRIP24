@@ -27,6 +27,7 @@ void uRIP_sendRoutes(uint8_t host);
 bool uRIP_deleteRoute(uint8_t route);
 void uRIP_garbageCollector();
 void uRIP_sortDatabase();
+void uRIP_sendDiscoveryReq();
 
 #ifdef __cplusplus
 }
