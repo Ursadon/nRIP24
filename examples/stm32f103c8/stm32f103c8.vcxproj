@@ -38,7 +38,7 @@
     <ClCompile>
       <AdditionalIncludeDirectories>FreeRTOS/include;NRF24;../../include;%(ClCompile.AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <Optimization>O1</Optimization>
-      <PreprocessorDefinitions>DEBUG=1;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>DEBUG=1;DEBUG_DEFAULT_INTERRUPT_HANDLERS;%(ClCompile.PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
     <Link>
       <AdditionalLinkerInputs>;%(Link.AdditionalLinkerInputs)</AdditionalLinkerInputs>

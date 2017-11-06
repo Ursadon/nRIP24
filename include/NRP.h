@@ -45,7 +45,7 @@ static const uint8_t rx_addr = 0x17;
 #elif _OPI_
 static const uint8_t rx_addr = 0xA7;
 #else
-static const uint8_t rx_addr = 0x07;
+extern uint8_t rx_addr;
 #endif
 
 #define BASEADDR 0xA0A1F0F100LL
@@ -65,7 +65,7 @@ typedef struct NRP_packet     //Создаем структуру!
 } NRP_packet;
 
 extern void CMD_parser(NRP_packet packet);
-extern bool radio_send(uint64_t address, const void* buf, uint8_t len, const bool multicast);
+extern bool radio_send(uint64_t address, void* buf, uint8_t len, bool multicast);
 
 bool NRP_send_packet(uint8_t host, NRP_packet packet);
 void NRP_parsePacket(NRP_packet packet);

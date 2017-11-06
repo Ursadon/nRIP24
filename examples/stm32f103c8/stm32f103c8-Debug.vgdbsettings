@@ -11,7 +11,11 @@
   </Project>
   <Build xsi:type="com.visualgdb.build.msbuild">
     <ProjectFile>stm32f103c8.vcxproj</ProjectFile>
-    <ParallelJobCount>0</ParallelJobCount>
+    <RemoteBuildEnvironment>
+      <Records />
+      <EnvironmentSetupFiles />
+    </RemoteBuildEnvironment>
+    <ParallelJobCount>1</ParallelJobCount>
   </Build>
   <Debug xsi:type="com.visualgdb.debug.embedded">
     <AdditionalStartupCommands />
@@ -113,13 +117,34 @@
         </KeyValue>
       </Entries>
     </DebugMethodProperties>
-    <AutoDetectRTOS>true</AutoDetectRTOS>
+    <AutoDetectRTOS>false</AutoDetectRTOS>
     <SemihostingSupport>Auto</SemihostingSupport>
     <StepIntoEntryPoint>false</StepIntoEntryPoint>
     <ReloadFirmwareOnReset>false</ReloadFirmwareOnReset>
     <ValidateEndOfStackAddress>true</ValidateEndOfStackAddress>
     <StopAtEntryPoint>false</StopAtEntryPoint>
-    <DynamicAnalysisSettings />
+    <DynamicAnalysisSettings>
+      <StackVerifier>
+        <VerifyStackBounds>false</VerifyStackBounds>
+        <AutoStepOutOfHook>true</AutoStepOutOfHook>
+        <StackLimitControlledByUser>false</StackLimitControlledByUser>
+        <ExplicitSizeLimit>0</ExplicitSizeLimit>
+        <ExplicitStackBase>0</ExplicitStackBase>
+        <Mode>Auto</Mode>
+      </StackVerifier>
+      <RealTimeWatch>
+        <SupportRTOSAnalysis>false</SupportRTOSAnalysis>
+        <SupportFunctionInstrumentation>false</SupportFunctionInstrumentation>
+        <MeasureOverhead>true</MeasureOverhead>
+      </RealTimeWatch>
+      <InstrumentedFunctions>
+        <IncludedFunctions />
+        <ExcludedFunctions />
+        <InstrumentSelectedFunctionsOnly>false</InstrumentSelectedFunctionsOnly>
+        <ExplicitEndOfFLASH>0</ExplicitEndOfFLASH>
+        <ExplicitEndOfRAM>0</ExplicitEndOfRAM>
+      </InstrumentedFunctions>
+    </DynamicAnalysisSettings>
     <EndOfStackSymbol>_estack</EndOfStackSymbol>
   </Debug>
   <CustomBuild>
@@ -139,7 +164,16 @@
     <Shortcuts />
     <ShowMessageAfterExecuting>true</ShowMessageAfterExecuting>
   </CustomShortcuts>
-  <UserDefinedVariables />
+  <UserDefinedVariables>
+    <BuildVariable>
+      <Label />
+      <Description />
+      <Value>C:/Projects/BSP/EmbeddedEFPs</Value>
+      <Name>EFP_BASE</Name>
+      <PromoteToEnvironment>true</PromoteToEnvironment>
+    </BuildVariable>
+  </UserDefinedVariables>
+  <ImportedPropertySheets />
   <CodeSense>
     <Enabled>Unknown</Enabled>
     <ExtraSettings>

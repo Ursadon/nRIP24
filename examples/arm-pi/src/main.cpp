@@ -54,7 +54,7 @@ boost::thread thread_Read;
 boost::thread thread_Routing;
 boost::mutex nrf_;
 
-bool radio_send(uint64_t address, const void* buf, uint8_t len, const bool multicast) {
+bool radio_send(uint64_t address, void* buf, uint8_t len, bool multicast) {
 	bool rval;
 	radio.openWritingPipe(BASEADDR + address);
 	radio.stopListening();
